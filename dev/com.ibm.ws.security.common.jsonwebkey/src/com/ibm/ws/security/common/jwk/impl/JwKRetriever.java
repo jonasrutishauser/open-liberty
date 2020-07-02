@@ -185,6 +185,9 @@ public class JwKRetriever {
         if (keyText != null) {
             return jwkSet.getPublicKeyBySetIdAndKeyText(setId, keyText);
         }
+        if (setId.startsWith("http") && kid != null) {
+            return key;
+        }
         return jwkSet.getPublicKeyBySetId(setId);
     }
 
